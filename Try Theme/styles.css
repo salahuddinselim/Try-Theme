@@ -1,0 +1,359 @@
+/* Here are all the colors used in the styles:
+
+Background Colors:
+- Main background: #f5f5f5
+- White background: #fff
+- Header/Footer gradient: linear-gradient(90deg, #1e3c72, #2a5298)
+- Hero section gradient: linear-gradient(90deg, #2a5298, #1e3c72) 
+- Upcoming tournaments gradient: linear-gradient(90deg, #e3f2fd, #bbdefb)
+
+Text Colors:
+- Main text: #333
+- White text: #fff 
+- Headings: #2a5298, #1e3c72
+- Card titles: #1e3c72
+- Tournament card text: #555
+- News text: #666
+- Score card text: #444
+
+Button/Interactive Colors:
+- CTA button: #f04e30
+- CTA button hover: #c03c26
+- View all button: #1e3c72
+- View all button hover: #2a5298
+
+Border/Shadow Colors:
+- Card borders: #ddd
+- Box shadows: rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)
+- Player card border: #1e3c72
+
+*/
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+header {
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  color: #fff;
+  padding: 1rem 0;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+.main-nav .logo img {
+  width: 120px;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.main-nav ul li {
+  position: relative;
+}
+
+.main-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+  background-color: #2a5298;
+}
+
+.main-nav ul .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  color: #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 10;
+}
+
+.main-nav ul li:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a {
+  padding: 10px 15px;
+  display: block;
+  color: #333;
+}
+
+.dropdown-menu li a:hover {
+  background: #f4f4f4;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  background: linear-gradient(90deg, #2a5298, #1e3c72);
+  color: #fff;
+}
+
+.hero-content {
+  max-width: 50%;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-button {
+  background-color: #2a5298;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #1e3c72;
+  transform: translateY(-3px);
+}
+
+.hero-image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Sections */
+section {
+  padding: 2rem 1rem;
+}
+
+h2 {
+  color: #2a5298;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* General Card Container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+  margin-top: 2rem;
+}
+
+/* General Card Styling */
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 350px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Titles */
+.card h2 {
+  font-size: 1.5rem;
+  color: #1e3c72;
+  margin-bottom: 1rem;
+}
+/* Upcoming Tournaments Section */
+.upcoming-tournaments {
+  text-align: center;
+  background: linear-gradient(90deg, #e3f2fd, #bbdefb);
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upcoming-tournaments h2 {
+  color: #1e3c72;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.tournament-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.tournament-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  max-width: 300px;
+  width: 100%;
+  text-align: left;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.tournament-card h3 {
+  font-size: 1.3rem;
+  color: #2a5298;
+  margin-bottom: 0.5rem;
+}
+
+.tournament-card p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.tournament-card strong {
+  color: #1e3c72;
+}
+
+/* Changed hover effect to match Live_Score.css */
+.tournament-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  border-color: #2a5298;
+  background-color: #f8f9fa;
+}
+
+/* Live Scores Section */
+.score-card p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.score-card strong {
+  color: #1e3c72;
+}
+
+/* Top Players Section */
+.player-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.player-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #1e3c72;
+  margin-bottom: 0.5rem;
+  object-fit: cover;
+}
+
+
+.player-card p {
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+}
+
+/* News Section */
+.news-item {
+  margin-bottom: 1rem;
+}
+
+.news-item h3 {
+  color: #2a5298;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.news-item p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* View All Button */
+.view-all {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #1e3c72;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.view-all:hover {
+  background-color: #2a5298;
+  transform: translateY(-3px);
+}
+/* Footer */
+footer {
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  color: #fff;
+  padding: 1.5rem 1rem;
+  text-align: center;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-logo img {
+  width: 100px;
+  margin-bottom: 0.5rem;
+}
+
+.footer-info p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.footer-info p:first-child {
+  font-weight: bold;
+}

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Sports Club</title>
+  <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+  <header>
+    <nav class="main-nav">
+      <div class="logo">
+        <img src="logo.png" alt="Sports Club Logo">
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="register.html" class="active">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="tournaments.html">Tournaments</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="register-page">
+    <div class="register-container">
+      <h1>Register Your Account</h1>
+
+      <div class="tabs">
+        <button class="tab-button active" onclick="showForm('admin')">Admin</button>
+        <button class="tab-button" onclick="showForm('organizer')">Organizer</button>
+        <button class="tab-button" onclick="showForm('public')">Public</button>
+      </div>
+
+      <!-- Admin Form -->
+      <form id="admin" class="form active" action="register.php" method="POST">
+        <input type="hidden" name="user_type" value="admin">
+        <div class="form-group">
+          <label for="admin-name">Full Name</label>
+          <input type="text" id="admin-name" name="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="admin-phone">Phone Number</label>
+          <input type="tel" id="admin-phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+        <div class="form-group">
+          <label for="admin-email">Email Address</label>
+          <input type="email" id="admin-email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="admin-password">Password</label>
+          <div class="password-container">
+            <input type="password" id="admin-password" name="password" placeholder="Enter a strong password"
+              minlength="8" maxlength="42" required>
+            <i class="eye-icon" onclick="togglePassword('admin-password')">&#128065;</i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="admin-confirm-password">Confirm Password</label>
+          <div class="password-container">
+            <input type="password" id="admin-confirm-password" name="confirm-password"
+              placeholder="Re-enter your password" minlength="8" maxlength="42" required>
+            <i class="eye-icon" onclick="togglePassword('admin-confirm-password')">&#128065;</i>
+          </div>
+        </div>
+        <p id="admin-password-error" class="error"></p>
+        <button type="submit" class="register-button"
+          onclick="return validatePasswords('admin-password', 'admin-confirm-password', 'admin-password-error')">Register
+          as Admin</button>
+      </form>
+
+      <!-- Organizer Form -->
+      <form id="organizer" class="form" action="register.php" method="POST">
+        <input type="hidden" name="user_type" value="organizer">
+        <div class="form-group">
+          <label for="organizer-name">Full Name</label>
+          <input type="text" id="organizer-name" name="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="organizer-phone">Phone Number</label>
+          <input type="tel" id="organizer-phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+        <div class="form-group">
+          <label for="organizer-role">Role</label>
+          <select id="organizer-role" name="role" required>
+            <option value="">Select Role</option>
+            <option value="Event Manager">Event Manager</option>
+            <option value="Team Manager">Team Manager</option>
+            <option value="Scorer">Scorer</option>
+            <option value="Coordinator">Coordinator</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="organizer-email">Email Address</label>
+          <input type="email" id="organizer-email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="organizer-password">Password</label>
+          <div class="password-container">
+            <input type="password" id="organizer-password" name="password" placeholder="Enter a password" minlength="8"
+              maxlength="42" required>
+            <i class="eye-icon" onclick="togglePassword('organizer-password')">&#128065;</i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="organizer-confirm-password">Confirm Password</label>
+          <div class="password-container">
+            <input type="password" id="organizer-confirm-password" name="confirm-password"
+              placeholder="Re-enter your password" minlength="8" maxlength="42" required>
+            <i class="eye-icon" onclick="togglePassword('organizer-confirm-password')">&#128065;</i>
+          </div>
+        </div>
+        <p id="organizer-password-error" class="error"></p>
+        <button type="submit" class="register-button"
+          onclick="return validatePasswords('organizer-password', 'organizer-confirm-password', 'organizer-password-error')">Register
+          as Organizer</button>
+      </form>
+
+      <!-- Public Form -->
+      <form id="public" class="form" action="register.php" method="POST">
+        <input type="hidden" name="user_type" value="public">
+        <div class="form-group">
+          <label for="public-name">Full Name</label>
+          <input type="text" id="public-name" name="name" placeholder="Enter your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="public-phone">Phone Number</label>
+          <input type="tel" id="public-phone" name="phone" placeholder="Enter your phone number" required>
+        </div>
+        <div class="form-group">
+          <label for="public-email">Email Address</label>
+          <input type="email" id="public-email" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="form-group">
+          <label for="public-password">Password</label>
+          <div class="password-container">
+            <input type="password" id="public-password" name="password" placeholder="Enter a password" minlength="8"
+              maxlength="42" required>
+            <i class="eye-icon" onclick="togglePassword('public-password')">&#128065;</i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="public-confirm-password">Confirm Password</label>
+          <div class="password-container">
+            <input type="password" id="public-confirm-password" name="confirm-password"
+              placeholder="Re-enter your password" minlength="8" maxlength="42" required>
+            <i class="eye-icon" onclick="togglePassword('public-confirm-password')">&#128065;</i>
+          </div>
+        </div>
+        <p id="public-password-error" class="error"></p>
+        <button type="submit" class="register-button"
+          onclick="return validatePasswords('public-password', 'public-confirm-password', 'public-password-error')">Register
+          as Public User</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Sports Club. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Show or Hide Password
+    function togglePassword(id) {
+      const passwordField = document.getElementById(id);
+      passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+    }
+
+    // Validate Passwords
+    function validatePasswords(passwordId, confirmPasswordId, errorId) {
+      const password = document.getElementById(passwordId).value;
+      const confirmPassword = document.getElementById(confirmPasswordId).value;
+      const errorElement = document.getElementById(errorId);
+
+      if (password !== confirmPassword) {
+        errorElement.textContent = 'Passwords do not match!';
+        return false;
+      } else {
+        errorElement.textContent = '';
+        return true;
+      }
+    }
+
+    // Tab switching
+    function showForm(formId) {
+      const forms = document.querySelectorAll('.form');
+      const buttons = document.querySelectorAll('.tab-button');
+      forms.forEach(form => form.classList.remove('active'));
+      buttons.forEach(button => button.classList.remove('active'));
+      document.getElementById(formId).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+
+</html>

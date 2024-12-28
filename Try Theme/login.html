@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Sports Club</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+  <?php
+  // Start the session
+  session_start();
+
+  // Initialize variables
+  $email = $password = "";
+  $emailErr = $passwordErr = $loginErr = "";
+
+  // Form submission handling
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validate email
+    if (empty($_POST["email"])) {
+      $emailErr = "Email is required";
+    } else {
+      $email = test_input($_POST["email"]);
+      // Validate email format
+      if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $emailErr = "Invalid email format";
+      }
+    }
+
+    // Validate password  
+    if (empty($_POST["password"])) {
+      $passwordErr = "Password is required";
+    } else {
+      $password = test_input($_POST["password"]);
+      // Add minimum password length check
+      if (strlen($password) < 8) {
+        $passwordErr = "Password must be at least 8 characters long";
+      }
+    }
+
+    // If no validation errors, attempt login
+    if (empty($emailErr) && empty($passwordErr)) {
+      try {
+        // Database connection using PDO
+        $dsn = "mysql:host=localhost;dbname=sports_club;charset=utf8mb4";
+        $username = "username"; // Replace with your DB username
+        $dbPassword = "password"; // Replace with your DB password
+        
+        $pdo = new PDO($dsn, $username, $dbPassword);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Prepare SQL statement
+        $stmt = $pdo->prepare("SELECT id, email, password FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($user && password_verify($password, $user['password'])) {
+          // Start session and store user data
+          $_SESSION['user_id'] = $user['id'];
+          $_SESSION['email'] = $user['email'];
+          $_SESSION['last_activity'] = time();
+          
+          // Regenerate session ID for security
+          session_regenerate_id(true);
+          
+          header("Location: index.html");
+          exit();
+        } else {
+          $loginErr = "Invalid email or password";
+        }
+      } catch (PDOException $e) {
+        error_log("Login error: " . $e->getMessage());
+        $loginErr = "An error occurred. Please try again later.";
+      }
+    }
+  }
+
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+  ?>
+
+  <header>
+    <nav class="main-nav">
+      <div class="logo">
+        <img src="logo.png" alt="Sports Club Logo">
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.html" class="active">Login</a></li>
+        <li><a href="tournaments.html">Tournaments</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="login-page">
+    <div class="login-container">
+      <h1>Login to Your Account</h1>
+      <?php if (!empty($loginErr)): ?>
+        <div class="error-message"><?php echo htmlspecialchars($loginErr); ?></div>
+      <?php endif; ?>
+      <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email"  required>
+          <?php if (!empty($emailErr)): ?>
+            <span class="error"><?php echo htmlspecialchars($emailErr); ?></span>
+          <?php endif; ?>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <?php if (!empty($passwordErr)): ?>
+            <span class="error"><?php echo htmlspecialchars($passwordErr); ?></span>
+          <?php endif; ?>
+        </div>
+        <button type="submit" class="login-button">Login</button>
+        <p class="register-link">Don't have an account? <a href="register.html">Register Here</a></p>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Sports Club. All Rights Reserved.</p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Club - Tournaments</title>
+  <link rel="stylesheet" href="tournament.css">
+</head>
+
+<body>
+  <header>
+    <nav class="main-nav">
+      <div class="logo">
+        <img src="logo.png" alt="Sports Club Logo">
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Live_Score.html">Live Scores</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Explore Our Tournaments</h1>
+      <p>Find and participate in exciting tournaments that bring out the best in you.</p>
+      <a href="#upcoming" class="cta-button">View Upcoming Tournaments</a>
+    </div>
+    <div class="hero-image">
+      <img src="tournament-hero.png" alt="Tournaments Hero Image">
+    </div>
+  </section>
+
+  <section id="upcoming" class="tournaments-list">
+    <h2>Upcoming Tournaments</h2>
+    <div class="tournament-container">
+      <div class="tournament-card">
+        <h3>Local Championship</h3>
+        <p><strong>Date:</strong> 15th Mar 2024</p>
+        <p><strong>Venue:</strong> City Sports Complex</p>
+      </div>
+      <div class="tournament-card">
+        <h3>Regional Cup</h3>
+        <p><strong>Date:</strong> 22nd Mar 2024</p>
+        <p><strong>Venue:</strong> National Stadium</p>
+      </div>
+    </div>
+    
+  </section>
+
+  <section class="register-tournament">
+    <h2>Register for a Tournament</h2>
+    <form action="register_tournament.php" method="POST" class="tournament-form">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="tournament">Select Tournament:</label>
+      <select id="tournament" name="tournament" required>
+        <?php
+        foreach ($tournaments as $tournament) {
+          echo "<option value='{$tournament['name']}'>{$tournament['name']}</option>";
+        }
+        ?>
+      </select>
+
+      <button type="submit" class="cta-button">Register</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="logo.png" alt="Sports Club Logo">
+      </div>
+      <div class="footer-info">
+        <p>&copy; 2024 Sports Club. All Rights Reserved.</p>
+        <p>Contact: info@sportsclub.com | Phone: +123 456 789</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

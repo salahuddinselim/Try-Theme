@@ -1,0 +1,173 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #2a5298;
+}
+
+a:hover {
+  color: #1e3c72;
+}
+
+/* Navigation Styles */
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+}
+
+.main-nav ul li {
+  position: relative;
+}
+
+.main-nav ul li a {
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1em;
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active {
+  background-color: #1e3c72;
+  color: #fff;
+}
+
+/* Dropdown Menu */
+.main-nav ul li .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  list-style: none;
+  padding: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.main-nav ul li:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li a {
+  padding: 10px 20px;
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #1e3c72;
+  color: #fff;
+}
+
+/* Live Scores Section */
+.live-scores {
+  padding: 40px 20px;
+  background: linear-gradient(90deg, #e3f2fd, #bbdefb);
+  color: #333;
+  text-align: center;
+}
+
+.live-scores h2 {
+  font-size: 2em;
+  color: #1e3c72;
+  margin-bottom: 30px;
+}
+
+.scores-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.score-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  text-align: left;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.score-card:hover {
+  transform: translateY(-5px);
+}
+
+.score-card h3 {
+  color: #1e3c72;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.score-card p {
+  margin: 5px 0;
+  font-size: 0.95em;
+  color: #444;
+}
+
+.details-button {
+  display: block;
+  margin: 15px 0 0;
+  padding: 10px 15px;
+  background-color: #1e3c72;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+  background-color: #2a5298;
+}
+
+.view-all {
+  display: inline-block;
+  margin-top: 20px;
+  color: #1e3c72;
+  text-decoration: underline;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+
+/* Footer Styles */
+footer {
+  background: linear-gradient(90deg, #1e3c72, #2a5298);
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+footer p {
+  margin: 5px 0;
+  color: #fff;
+}
