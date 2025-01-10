@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Scores - Sports Club</title>
+  <link rel="stylesheet" href="Live_Scorer.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="main-nav">
+      <div class="logo">
+        <img src="logo.jpg" alt="Sports Club Logo">
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="#">Tournaments</a>
+          <ul class="dropdown-menu">
+            <li><a href="local-tournaments.html">Local Tournaments</a></li>
+            <li><a href="regional-tournaments.html">Regional Tournaments</a></li>
+          </ul>
+        </li>
+        <li><a href="live-scores.html" class="active">Live Scores</a></li>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="login.php">Login</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Live Scores Section -->
+  <section class="live-scores">
+    <h2>Live Match Scores</h2>
+    <div class="scores-container">
+      <div class="score-card">
+        <h3>Match: Team A vs Team B</h3>
+        <p><strong>Score:</strong> 2 - 1</p>
+        <p><strong>Status:</strong> In Progress</p>
+        <p><strong>Location:</strong> City Stadium</p>
+        <button class="details-button" onclick="window.location.href='match-details.html?id=1';">View Details</button>
+      </div>
+
+      <div class="score-card">
+        <h3>Match: Team C vs Team D</h3>
+        <p><strong>Score:</strong> 0 - 0</p>
+        <p><strong>Status:</strong> First Half</p>
+        <p><strong>Location:</strong> Sports Complex</p>
+        <button class="details-button" onclick="window.location.href='match-details.html?id=2';">View Details</button>
+      </div>
+
+      <div class="score-card">
+        <h3>Match: Team E vs Team F</h3>
+        <p><strong>Score:</strong> 1 - 1</p>
+        <p><strong>Status:</strong> Second Half</p>
+        <p><strong>Location:</strong> National Arena</p>
+        <button class="details-button" onclick="window.location.href='match-details.html?id=3';">View Details</button>
+      </div>
+    </div>
+    <a href="login.php" class="view-all">View All Live Scores</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo">
+        <img src="logo.jpg" alt="Sports Club Logo">
+      </div>
+      <div class="footer-info">
+        <p>&copy; 2024 Sports Club. All Rights Reserved.</p>
+        <p>Contact: info@sportsclub.com | Phone: +123 456 789</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>

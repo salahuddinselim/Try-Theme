@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Sports Club</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="logo">
+                <img src="logo.jpg" alt="Sports Club Logo">
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="login.php" class="active">Login</a></li>
+                <li><a href="tournaments.html">Tournaments</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-page">
+        <div class="login-container">
+            <h1>Login to Your Account</h1>
+            <?php if (!empty($loginErr)): ?>
+                <div class="error-message"><?php echo htmlspecialchars($loginErr); ?></div>
+            <?php endif; ?>
+            <form method="POST" action="login.php">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required
+                        value="<?php echo htmlspecialchars($email); ?>">
+                    <?php if (!empty($emailErr)): ?>
+                        <span class="error"><?php echo htmlspecialchars($emailErr); ?></span>
+                    <?php endif; ?>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    <?php if (!empty($passwordErr)): ?>
+                        <span class="error"><?php echo htmlspecialchars($passwordErr); ?></span>
+                    <?php endif; ?>
+                </div>
+                <button type="submit" class="login-button">Login</button>
+                <p class="register-link">Don't have an account? <a href="register.html">Register Here</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-logo">
+            <img src="logo.jpg" alt="Sports Club Logo">
+        </div>
+        <div class="footer-info">
+            <p>&copy; 2024 Sports Club. All Rights Reserved.</p>
+            <p>Address: 123 Sports Club Street, Dhaka, Bangladesh</p>
+            <p>Email: <a href="mailto:info@sportsclub.com">info@sportsclub.com</a></p>
+            <p>Phone: +123 456 789</p>
+        </div>
+    </footer>
+</body>
+
+</html>
